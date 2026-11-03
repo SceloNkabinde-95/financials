@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { importCSV, compile } from '../src/core.mjs';
+const csv=readFileSync(new URL('../fixtures/sample-trial-balance.csv',import.meta.url),'utf8');
+const mappings=JSON.parse(readFileSync(new URL('../fixtures/sample-mappings.json',import.meta.url),'utf8'));
+test('synthetic trial balance balances',()=>{const result=importCSV(csv);assert.equal(result.balanced,true);assert.equal(result.accounts.length,13);});
+test('compile reconciles and provides lineage',()=>{const r=compile({csv,mappings});assert.equal(r.status,'DRAFT_ONLY');assert.equal(r.statements[0].rows.find(x=>x.label==='Total assets').amount,'180000.00');assert.equal(r.statements[1].rows.at(-1).amount,'50000.00');assert.ok(r.statements[1].rows[0].sources.length);});
+test('unbalanced CSV blocks processing',()=>{assert.throws(()=>compile({csv:csv.replace('70000.00','71000.00'),mappings}),/does not balance/);});
+test('unmapped accounts block processing',()=>{assert.throws(()=>compile({csv,mappings:{}}),/Unmapped accounts/);});
+test('unsupported monetary precision rejected',()=>{assert.throws(()=>importCSV(csv.replace('70000.00','70000.001')),/non-negative amount/);});
+test('debit and credit on same row rejected',()=>{assert.throws(()=>importCSV(csv.replace('70000.00,0.00','70000.00,1.00')),/cannot both be positive/);});
+test('invalid CSV schema rejected',()=>{assert.throws(()=>importCSV('x,y\na,b'),/Required columns/);});

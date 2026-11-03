@@ -1,0 +1,14 @@
+account_code,account_name,debit,credit
+1000,Cash at bank,70000.00,0.00
+1100,Trade receivables,40000.00,0.00
+1500,Property plant and equipment cost,90000.00,0.00
+1590,Accumulated depreciation,0.00,20000.00
+2000,Trade payables,0.00,30000.00
+2100,Loan payable,0.00,25000.00
+3000,Share capital,0.00,50000.00
+3100,Opening retained earnings,0.00,25000.00
+4000,Revenue,0.00,150000.00
+5000,Cost of sales,85000.00,0.00
+6100,Administrative expenses,5000.00,0.00
+6200,Depreciation expense,5000.00,0.00
+6300,Finance costs,5000.00,0.00

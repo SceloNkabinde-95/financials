@@ -1,0 +1,15 @@
+{
+  "1000": "cash",
+  "1100": "receivables",
+  "1500": "ppe_cost",
+  "1590": "accumulated_depreciation",
+  "2000": "trade_payables",
+  "2100": "loan_payable",
+  "3000": "share_capital",
+  "3100": "opening_retained_earnings",
+  "4000": "revenue",
+  "5000": "cost_of_sales",
+  "6100": "admin_expenses",
+  "6200": "depreciation_expenses",
+  "6300": "finance_costs"
+}
