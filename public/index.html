@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Financials — Working Prototype</title><link rel="stylesheet" href="/styles.css"></head>
+<body><div class="shell">
+<aside class="sidebar"><div class="brand"><span class="brand-mark">ƒ</span><span>financials</span></div>
+<div class="small-label">WORKSPACE</div><nav><a class="current" href="/">Financial statements</a><span>Clients <small>Planned</small></span><span>Engagements <small>Planned</small></span><span>Templates <small>Planned</small></span></nav>
+<div class="sidebar-foot">Research environment<br><strong>Not for client financial data</strong></div></aside>
+<main><header class="top"><div><p class="eyebrow">WORKING PROTOTYPE · MILESTONE 1</p><h1>Prepare financial statements</h1><p class="sub">From a mapped trial balance to a transparent financial draft.</p></div><span class="tag">Demo environment</span></header>
+<div class="notice"><strong>Synthetic-data only.</strong> This prototype is not IFRS compliant, cannot publish statutory financial statements, and must not be used with real client data.</div>
+<section class="layout"><div class="editor">
+<div class="panel"><div class="panel-head"><span class="step">01</span><h2>Company &amp; reporting basis</h2></div>
+<label for="entity">Company name</label><input id="entity" value="Synthetic Example (Pty) Ltd" maxlength="120">
+<label for="framework">Reporting pack</label><select id="framework"><option>IFRS for SMEs (conceptual)</option><option>Full IFRS (conceptual)</option></select>
+<p class="help">Pack choices demonstrate configuration only. Neither pack contains validated statutory rules.</p></div>
+<div class="panel"><div class="panel-head"><span class="step">02</span><h2>Import trial balance</h2></div>
+<div class="upload"><p>Upload a CSV trial balance</p><input type="file" id="file" accept=".csv,text/csv"><p class="help">Required columns: account_code, account_name, debit, credit</p></div>
+<div class="actions"><button id="sample" class="secondary">Load sample trial balance</button></div>
+<p class="help">Excel, PDF, OCR/AI and additional formats are planned — not enabled in this prototype.</p>
+<div id="import-status" class="muted">No trial balance loaded.</div></div>
+<div class="panel"><div class="panel-head"><span class="step">03</span><h2>Review account mappings</h2></div><p class="help">Every ledger account must be assigned a reporting concept before compilation.</p><div id="mapping-area" class="mapping-empty">Load the sample to review account mappings.</div></div>
+<div class="actions"><button id="compile" disabled>Generate illustrative draft</button><span id="status" role="status"></span></div>
+</div><div class="output">
+<div class="panel results"><div class="panel-head"><span class="step">04</span><h2>Financial statement preview</h2></div><div id="results"><div class="blank"><div class="blank-icon">▤</div><strong>Your draft will appear here</strong><p>Import a trial balance, confirm mappings, and generate a preview.</p></div></div></div>
+</div></section><footer>Built for transparent financial workflows · Privacy-first architecture · Statutory approval is disabled</footer></main>
+</div><script type="module" src="/app.js"></script></body></html>
